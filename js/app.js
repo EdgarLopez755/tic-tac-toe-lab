@@ -4,9 +4,9 @@ const squareEls = document.querySelectorAll('.board')
 
 const messageEl = document.querySelector('#message')
 
+
 console.log(squareEls)
 console.log(messageEl)
-
 
 
 
