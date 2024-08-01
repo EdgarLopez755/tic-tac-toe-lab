@@ -112,7 +112,82 @@ const updateMessage = () => {
     }
 }
 
+
+
+const handleClick = (event) => {
+    const clickedSquare = event.target
+    const squareIndex = parseInt(clickedSquare.id)
+    if (board[squareIndex] !== '') return;
+
+    placePiece(squareIndex)
+    checkForWinner()
+    checkForTie()
+    switchPlayerTurn()
+    render()
+  
+    }
+
+    const placePiece = (index) => { 
+        board[index] = turn;
+
+    }
+    console.log(board)
+
+    const checkForWinner = () => {
+        const winningCombos = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ]
+
+        winningCombos.forEach(combo => {
+        if (
+            board[combo[0]] !== '' &&
+            board[combo[0]] === 
+            board[combo[1]] &&
+            board[combo[0]] ===
+            board[combo[2]]
+        ) {
+            winner = board[combo[0]]
+        }
+        })
+        
+    }
+    console.log(winner)
+
+
+    const checkForTie = () => {
+        if (!winner && board.every(cell => cell !== '')) {
+            tie = true
+        }
+
+    }
+    console.log(true)
+
+const switchPlayerTurn = () => {
+    if (!winner) {
+        turn = turn === 'X' ? 'O' : 'X'
+    }
+}
+
+console.log(turn)
+
+
+squareEls.forEach(square => {
+    square.addEventListener('click', handleClick)
+})
+
 init()
+
+
+
+
+   
 
 
 
@@ -123,7 +198,6 @@ init()
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-
 
 
 
