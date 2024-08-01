@@ -1,10 +1,9 @@
 /*-------------------------------- Constants --------------------------------*/
 
+//5) Define the required constants.
+
 const squareEls = document.querySelectorAll('.sqr')
 
-const messageEl = document.getElementById('message')
-
-const resetBtnEl = document.getElementById('reset')
 
 
 const winningCombos = [
@@ -25,9 +24,7 @@ const winningCombos = [
 
 
 
-console.log(squareEls)
 
-console.log(messageEl)
 
 
 
@@ -60,7 +57,11 @@ let tie = false
 
 /*------------------------ Cached Element References ------------------------*/
 
+//2) Store cached element references.
 
+const messageEl = document.getElementById('message')
+
+const resetBtnEl = document.getElementById('reset')
 
 
 
@@ -71,6 +72,9 @@ let tie = false
 
 
 /*-------------------------------- Functions --------------------------------*/
+
+//3) Upon loading, the game state should be initialized, and a function should 
+//   be called to render this game state.
 
 const init = () => { 
     board = [
@@ -115,6 +119,7 @@ const updateMessage = () => {
 }
 
 
+//6) Handle a player clicking a square with a `handleClick` function.
 
 const handleClick = (event) => {
     const clickedSquare = event.target
@@ -134,6 +139,8 @@ const handleClick = (event) => {
 
     }
     console.log(board)
+
+    //4) The state of the game should be rendered to the user.
 
     const checkForWinner = () => {
         const winningCombos = [
@@ -195,10 +202,11 @@ console.log(turn)
 /*----------------------------- Event Listeners -----------------------------*/
 
 
-
 squareEls.forEach(square => {
     square.addEventListener('click', handleClick)
 })
+
+//7) Create Reset functionality.
 
 resetBtnEl.addEventListener('click', init)
 
@@ -209,15 +217,16 @@ init()
 
 
 
-//2) Store cached element references.
 
-//3) Upon loading, the game state should be initialized, and a function should 
-//   be called to render this game state.
 
-//4) The state of the game should be rendered to the user.
 
-//5) Define the required constants.
 
-//6) Handle a player clicking a square with a `handleClick` function.
 
-//7) Create Reset functionality.
+
+
+
+
+
+
+
+
