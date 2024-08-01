@@ -4,6 +4,8 @@ const squareEls = document.querySelectorAll('.sqr')
 
 const messageEl = document.getElementById('message')
 
+const resetBtnEl = document.getElementById('reset')
+
 
 const winningCombos = [
     [0, 1, 2],
@@ -72,7 +74,7 @@ let tie = false
 
 const init = () => { 
     board = [
-        'X', 'O', '',
+        '', '', '',
         '', '', '',
         '', '', '',
     ]
@@ -178,13 +180,6 @@ const switchPlayerTurn = () => {
 console.log(turn)
 
 
-squareEls.forEach(square => {
-    square.addEventListener('click', handleClick)
-})
-
-init()
-
-
 
 
    
@@ -201,7 +196,13 @@ init()
 
 
 
+squareEls.forEach(square => {
+    square.addEventListener('click', handleClick)
+})
 
+resetBtnEl.addEventListener('click', init)
+
+init()
 
 
 
