@@ -40,13 +40,13 @@ const winningCombos = [
 
 let board = ['', '', '',
              '', '', '',
-             '', '', '']
+             '', '', ''];
 
-let turn = 'X'
+let turn = 'X';
 
-let winner = false
+let winner = false;
 
-let tie = false
+let tie = false;
 
 
 
@@ -82,25 +82,31 @@ const init = () => {
         '', '', '',
         '', '', '',
     ]
-   render()
+turn = 'X';
+
+winner = false;
+
+tie = false;
+
+render();
    
 
-}
+};
 
 console.log(init)
 
 const render = () => {
-    updateBoard()
-    updateMessage()
+    updateBoard();
+    updateMessage();
 
-}
+};
 
 
 const updateBoard = () => {
     board.forEach((cell, index) => {
-        squareEls[index].textContent = cell
-    })
-}
+        squareEls[index].textContent = cell;
+    });
+};
    
         
     
@@ -111,12 +117,12 @@ console.log(updateBoard)
 const updateMessage = () => {
     if (!winner && !tie) {
         messageEl.textContent = `It's ${turn}'s turn`
-    } else if (!winner && !tie) {
+    } else if (!winner && tie) {
         messageEl.textContent = 'It is a tie!'
     } else {
         messageEl.textContent = `${winner} has won!`
-    }
-}
+    };
+};
 
 
 //6) Handle a player clicking a square with a `handleClick` function.
@@ -132,64 +138,54 @@ const handleClick = (event) => {
     switchPlayerTurn()
     render()
   
-    }
+    };
 
     const placePiece = (index) => { 
         board[index] = turn;
 
-    }
+    };
     console.log(board)
 
     //4) The state of the game should be rendered to the user.
 
     const checkForWinner = () => {
-        const winningCombos = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [0, 4, 8],
-            [2, 4, 6],
-        ]
-
-        winningCombos.forEach(combo => {
-        if (
+        winningCombos.forEach((combo) => {
+          if (
             board[combo[0]] !== '' &&
-            board[combo[0]] === 
-            board[combo[1]] &&
-            board[combo[0]] ===
-            board[combo[2]]
-        ) {
-            winner = board[combo[0]]
-        }
-        })
-        
-    }
+            board[combo[0]] === board[combo[1]] &&
+            board[combo[0]] === board[combo[2]]
+          ) {
+            winner = board[combo[0]]; 
+      
+          }
+        });
+      };   
     console.log(winner)
 
 
     const checkForTie = () => {
-        if (!winner && board.every(cell => cell !== '')) {
-            tie = true
+        if (!winner && board.every((cell) => cell !== '')) {
+            tie = true;
         }
-
-    }
+    };
     console.log(true)
 
 const switchPlayerTurn = () => {
     if (!winner) {
         turn = turn === 'X' ? 'O' : 'X'
     }
-}
+};
+
+
 
 console.log(turn)
 
 
 
 
-   
+
+
+
 
 
 
@@ -202,7 +198,8 @@ console.log(turn)
 /*----------------------------- Event Listeners -----------------------------*/
 
 
-squareEls.forEach(square => {
+
+squareEls.forEach((square) => {
     square.addEventListener('click', handleClick)
 })
 
